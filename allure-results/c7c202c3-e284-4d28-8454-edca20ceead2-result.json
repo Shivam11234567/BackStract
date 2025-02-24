@@ -1,0 +1,1 @@
+{"name": "test_mismatched_passwords", "status": "passed", "description": "Test entering mismatched new and confirm password fields.", "start": 1740053144113, "stop": 1740053151963, "uuid": "75b942ec-1157-4eea-8165-6df481bf7b42", "testCaseId": "b924a9afbf07664b564eeb8afcae2c5b", "fullName": "tests.test_forgot_password.TestForgotPassword#test_mismatched_passwords"}
