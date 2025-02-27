@@ -12,7 +12,7 @@ class OTPPage:
     def click_verify(self):
         self.driver.find_element(*self.verify_button).click()
 """
-from selenium.webdriver.common.by import By
+"""from selenium.webdriver.common.by import By
 
 class otp:
     def __init__(self, driver):
@@ -22,7 +22,7 @@ class otp:
         self.driver.find_element(By.XPATH, "//input[@name='otp']").send_keys(otp)
 
     def click_submit_button(self):
-        self.driver.find_element(By.XPATH, "//button[@type='submit']").click()
+        self.driver.find_element(By.XPATH, "//button[@type='submit']").click()"""
 
 
 

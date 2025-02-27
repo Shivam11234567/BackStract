@@ -119,12 +119,12 @@ class TestLogin:
         assert "forget-password" in driver.current_url, f"Unexpected URL: {driver.current_url}"
         time.sleep(3)
 
-    """def test_google_login(self, driver):
+    def test_google_login(self, driver):
         #Verify login with Google authentication.
         login_page = LoginPage(driver)
         login_page.navigate()
         login_page.click_google_login()
-        time.sleep(10)"""
+        time.sleep(10)
 
     def test_github_login(self, driver):
         """Verify login with GitHub authentication."""
@@ -140,3 +140,5 @@ class TestLogin:
         login_page.click_signup()
         assert "signup" in driver.current_url  # Check if redirected
         time.sleep(3)
+
+        driver.quit()

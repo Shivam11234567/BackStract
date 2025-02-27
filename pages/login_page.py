@@ -14,7 +14,6 @@ class LoginPage:
         self.driver.find_element(By.ID, "login_submit_btn").click()
 """
 
-import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -50,7 +49,8 @@ class LoginPage:
         self.driver.find_element(By.XPATH, "//a[contains(@href, '/auth/signup')]").click()
 
     def click_google_login(self):
-        self.driver.find_element(By.XPATH, "//button[contains(@id, 'google_signup')]").click()
+        self.driver.find_element(By.ID, "github_google").click()
+        #self.driver.find_element(By.XPATH, "//button[contains(@id, 'google_signup')]").click()
 
     def click_github_login(self):
         self.driver.find_element(By.ID, "github_signup").click()
