@@ -3,8 +3,6 @@ import time
 
 from pages.Settings_page import SettingsPage
 from pages.login_page import LoginPage
-from pages.workspace_page import WorkspacePage
-
 
 @pytest.mark.usefixtures("driver")
 class TestSettings:
@@ -21,7 +19,6 @@ class TestSettings:
         login_page.enter_email("shivamtesting7@gmail.com")
         login_page.enter_password("Pass@9988")
         login_page.click_login_button()
-
 
         time.sleep(4)
         driver.refresh()
@@ -76,4 +73,7 @@ class TestSettings:
         print("Clicked Settings Button")
         settings.settings_purchase_history()
         time.sleep(5)
+
+
+
 

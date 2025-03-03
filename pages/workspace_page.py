@@ -138,3 +138,47 @@ class WorkspacePage:
             except Exception:
                 print("No upgrade plan alert found.")
 
+            # Extract the new URL dynamically
+            collection_url = self.driver.current_url
+            print("Extracted collection URL:", collection_url)
+            return collection_url
+
+    def collection1(self):
+        WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.ID, "collection__card--0"))
+        ).click()
+
+    def get_api(self):
+        api_element = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.ID, "api__card-0"))
+        )
+        api_element.click()
+
+        # Extract the new collection URL
+        created_collection1_url = self.driver.current_url
+        print("Extracted Collection URL:", created_collection1_url)
+        return created_collection1_url
+
+    """def get_copy_endpoint(self):
+        copy_endpoint = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.ID, "copy_endpoint_link"))
+        )
+        copy_endpoint.click()
+
+    def delete_collection(self):
+        delete_api = WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.ID, "delete_endpoint_action"))
+        )
+        delete_api.click()"""
+
+    def run_debug(self):
+        run_debug = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "run_debug_btn"))
+        )
+        run_debug.click()
+
+        #Extract the get api builder screen
+
+        get_collection_url = self.driver.current_url
+        print("Extracted Collection URL:", get_collection_url)
+        return get_collection_url

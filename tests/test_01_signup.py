@@ -5,6 +5,18 @@ from utilities.email_utils import get_otp_from_email
 
 @pytest.mark.usefixtures("driver")
 class TestSignup:
+
+    def test_signup_with_empty_fields(self, driver):
+        print("Testing signup with empty fields")
+        signup = SignupPage(driver)
+
+        signup.navigate()
+        signup.enter_name_and_continue("")  # Empty name
+        #signup.fill_email_and_password("", "", "")  # Empty email and password fields
+
+        time.sleep(3)
+
+
     def test_signup_and_onboarding(self, driver):
         print("Testing signup and onboarding process")
         signup = SignupPage(driver)
@@ -26,6 +38,8 @@ class TestSignup:
 
         time.sleep(5)
 
+        print("signup with OTP successfully.")
+
         # Navigate to Onboarding Page and complete steps
         signup.navigate_to_onboarding()
         signup.select_role()
@@ -42,7 +56,7 @@ class TestSignup:
         # Navigate to Onboarding pricing page
         signup.navigate_to_onboarding_pricing()
         signup.select_price()
-        print("Onboarding completed successfully.")
+        print("Onboarding_pricing completed successfully.")
 
     def test_signup_with_invalid_email(self, driver):
         print("Testing signup with invalid email")
@@ -80,20 +94,10 @@ class TestSignup:
 
         signup.navigate()
         signup.enter_name_and_continue("Shivam Srivastava")
-        signup.fill_email_and_password("shivam@yopmail.com", "Pass@9988", "Pass@9988")
+        signup.fill_email_and_password("shivam.1@gmail.com", "Pass@9988", "Pass@9988")
 
         time.sleep(5)
         signup.enter_otp("123456")  # Entering an invalid OTP
-
-        time.sleep(3)
-
-    def test_signup_with_empty_fields(self, driver):
-        print("Testing signup with empty fields")
-        signup = SignupPage(driver)
-
-        signup.navigate()
-        signup.enter_name_and_continue("")  # Empty name
-        signup.fill_email_and_password("", "", "")  # Empty email and password fields
 
         time.sleep(3)
 
@@ -103,7 +107,7 @@ class TestSignup:
 
         signup.navigate()
         signup.enter_name_and_continue("Shivam Srivastava")
-        signup.fill_email_and_password("shivam@yopmail.com", "Pass@9988", "Pass@9988")
+        signup.fill_email_and_password("shivamtesting7@gmail.com", "Pass@9988", "Pass@9988")
 
         time.sleep(300)
         otp = get_otp_from_email()

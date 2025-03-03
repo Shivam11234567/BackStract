@@ -83,7 +83,7 @@ class TestDashboard:
         time.sleep(10)
         print("pass the test")
 
-        dashboard.create_a_datasource("aws-0-ap-southeast-1.pooler.supabase.com", "postgres.wdgdermffpbfpwlmivau", "5432", "$hivam+9988")
+        dashboard.create_a_datasource("aws-0-ap-southeast-1.pooler.supabase.com", "postgres.wdgdermffpbfpwlmivau","5432", "$hivam+9988")
         print("Create a datasource successfully")
 
         time.sleep(15)
@@ -93,9 +93,59 @@ class TestDashboard:
         time.sleep(10)
         print("Select Postgres database")
 
+    def test_collections(self, driver):
+
+        print("clicked collections successfully")
+        login_page = LoginPage(driver)
+        login_page.navigate()
+        login_page.enter_email("shivamtesting7@gmail.com")
+        login_page.enter_password("Pass@9988")
+        login_page.click_login_button()
+
+        time.sleep(4)
+        driver.refresh()
+
+        dashboard = WorkspacePage(driver)
+        dashboard.navigate()
+        workspace_url = dashboard.click_workspace_name()  # Extracts the URL dynamically
+        print("Navigated to extracted workspace URL:", workspace_url)
+        time.sleep(10)
+
+        driver.get(workspace_url)  # Navigate to the extracted workspace URL
+        time.sleep(10)
+
+        dashboard.collection1()
+        print("Clicked 'Collection' button successfully")
+        time.sleep(10)
+
+        created_collection1_url = dashboard.get_api()  # Extracts the URL dynamically
+        print("Navigated to extracted collections URL:", created_collection1_url)
+        time.sleep(10)
+
+        driver.get(created_collection1_url)  # Navigate to the extracted collection URL
+        time.sleep(10)
+
+        dashboard.get_api()
+        print("Clicked 'get api' click successfully")
+        time.sleep(10)
 
 
+        """dashboard.get_copy_endpoint()
+        print("Copy 'get copy endpoint' successfully")
+
+        dashboard.delete_collection()
+        print("click delete Button successfully")"""
+
+        print("test")
+        get_collection_url = dashboard.run_debug()  # Extracts the URL dynamically
+        print("Navigated to extracted collections URL:", get_collection_url)
+        time.sleep(10)
+
+        driver.get(get_collection_url)  # Navigate to the extracted collection URL
+        time.sleep(10)
+
+        dashboard.run_debug()
+        print("'run and debug' Click successfully")
+        time.sleep(10)
 
 
-
-        
