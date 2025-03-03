@@ -173,7 +173,7 @@ class WorkspacePage:
 
     def run_debug(self):
         run_debug = WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.ID, "run_debug_btn"))
+            EC.element_to_be_clickable((By.ID, "header_run_and_debug"))
         )
         run_debug.click()
 
@@ -182,3 +182,76 @@ class WorkspacePage:
         get_collection_url = self.driver.current_url
         print("Extracted Collection URL:", get_collection_url)
         return get_collection_url
+
+    print("test")
+
+    def run(self):
+            run = WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable((By.ID, "builde_sidebar_run_btn"))
+            )
+            run.click()
+
+    def publish(self):
+            publish = WebDriverWait(self.driver, 60).until(
+                EC.element_to_be_clickable((By.ID, "header_publish"))
+            )
+            publish.click()
+
+
+    def go_to_dashboard(self):
+        go_to_dashboard = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "col_go_to_dashboard"))
+        )
+        go_to_dashboard.click()
+
+        #Extract the Go to Dashboard screen
+
+        """go_to_dashboard_url = self.driver.current_url
+        print("Extracted Collection URL:", go_to_dashboard_url)
+        return go_to_dashboard_url"""
+
+
+    def get_api_1(self):
+        post_api = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "api__card-1"))
+        )
+        post_api.click()
+
+        # Extract the new collection URL
+        created_collection_get_url = self.driver.current_url
+        print("Extracted Collection URL:", created_collection_get_url)
+        return created_collection_get_url
+
+    def post_api(self):
+        post_api = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "api__card-2"))
+        )
+        post_api.click()
+
+        # Extract the new collection URL
+        created_collection_post_url = self.driver.current_url
+        print("Extracted Collection URL:", created_collection_post_url)
+        return created_collection_post_url
+
+    def put_api(self):
+        put_api = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "api__card-3"))
+        )
+        put_api.click()
+
+        # Extract the new collection URL
+        created_collection_put_url = self.driver.current_url
+        print("Extracted Collection URL:", created_collection_put_url)
+        return created_collection_put_url
+
+    def delete_api(self):
+            delete_api = WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable((By.ID, "api__card-4"))
+            )
+            delete_api.click()
+
+            # Extract the new collection URL
+            created_collection_delete_url = self.driver.current_url
+            print("Extracted Collection URL:", created_collection_delete_url)
+            return created_collection_delete_url
+
