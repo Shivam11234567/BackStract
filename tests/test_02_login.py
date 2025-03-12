@@ -67,6 +67,7 @@ import time
 
 @pytest.mark.usefixtures("driver")
 class TestLogin:
+
     def test_correct_email(self, driver):
         """Verify login with correct email and password."""
         login_page = LoginPage(driver)
@@ -74,6 +75,8 @@ class TestLogin:
         login_page.enter_email("shivamtesting7@gmail.com")
         login_page.enter_password("Pass@9988")
         login_page.click_login_button()
+        login_page.wait_for_redirect()
+        assert "workspace" in driver.current_url, "Login failed with correct credentials"
 
     def test_incorrect_email(self, driver):
         """Verify login with incorrect email."""
@@ -82,7 +85,8 @@ class TestLogin:
         login_page.enter_email("shivamtesting@gmail.com")
         login_page.enter_password("Pass@9988")
         login_page.click_login_button()
-        time.sleep(3)  # Verify the error message manually
+        error_message = login_page.get_error_message()
+        assert error_message == "user with this email_id does not exists", "Unexpected error message for incorrect email"
 
     def test_incorrect_password(self, driver):
         """Verify login with incorrect password."""
@@ -91,7 +95,8 @@ class TestLogin:
         login_page.enter_email("shivamtesting7@gmail.com")
         login_page.enter_password("wrongpassword")
         login_page.click_login_button()
-        time.sleep(3)
+        error_message = login_page.get_error_message()
+        assert error_message == "password does not match", "Unexpected error message for incorrect password"
 
     def test_empty_fields(self, driver):
         """Verify login with empty email and password fields."""

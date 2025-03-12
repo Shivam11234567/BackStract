@@ -1,4 +1,3 @@
-
 import time
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -28,10 +27,10 @@ class SignupPage:
         time.sleep(2)
 
     def enter_otp(self, otp):
-        #self.driver.find_element(By.ID, "otp_input").send_keys(otp)
+        # self.driver.find_element(By.ID, "otp_input").send_keys(otp)
         self.driver.find_element(By.XPATH, "//input[@id='otp_input']").send_keys(otp)
         self.driver.find_element(By.ID, "verify_continue").click()
-        #self.driver.find_element(By.ID, "otp_submit_button").click()
+        # self.driver.find_element(By.ID, "otp_submit_button").click()
         time.sleep(10)
 
         # Navigate to Onboarding Page
@@ -61,3 +60,14 @@ class SignupPage:
     def select_price(self):
         self.driver.find_element(By.CSS_SELECTOR, "#plan_btn_0").click()
         time.sleep(2)
+
+    def get_error_message(self):
+        """Wait for and return the error message text."""
+        try:
+            error_element = WebDriverWait(self.driver, 15).until(
+                EC.visibility_of_element_located((By.CLASS_NAME, "go3958317564"))
+            )
+            return error_element.text
+        except:
+            print("Error message not found!")
+            return None  # Return None if the error message never appears

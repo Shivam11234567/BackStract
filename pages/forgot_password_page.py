@@ -30,6 +30,7 @@ class ForgotPasswordPage:
 from selenium.webdriver.common.by import By
 import time
 
+
 class ForgotPasswordPage:
     def __init__(self, driver):
         self.driver = driver
@@ -54,5 +55,3 @@ class ForgotPasswordPage:
         self.driver.find_element(By.XPATH, "//input[@id='password_renter_input']").send_keys(confirm_password)
         self.driver.find_element(By.ID, "change__password_continue").click()
         time.sleep(2)
-
-

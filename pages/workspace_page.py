@@ -23,6 +23,10 @@ class WorkspacePage:
         """Click the button to create a workspace."""
         self.driver.find_element(By.ID, "create_workspace_btn").click()
 
+    def click_workspace_setting_button(self):
+            """Click the button to workspace Setting Button."""
+            self.driver.find_element(By.ID, "workspace_card_setting_0").click()
+
     def click_workspace_name(self):
         """Click on the first workspace name and return the new URL dynamically."""
         workspace_button = WebDriverWait(self.driver, 10).until(
@@ -254,4 +258,160 @@ class WorkspacePage:
             created_collection_delete_url = self.driver.current_url
             print("Extracted Collection URL:", created_collection_delete_url)
             return created_collection_delete_url
+
+
+    """def workspace_setting(self):
+            workspace_setting = WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable((By.ID, "workspace_card_setting_0"))
+            )
+            workspace_setting.click()
+
+            # Extract the new collection URL
+            workspace_setting_url = self.driver.current_url
+            print("Extracted Collection URL:", workspace_setting_url)
+            return workspace_setting_url"""
+
+    """def post_api_input_raw(self):
+        post_api = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "body_raw_0_input"))
+
+
+        )
+        post_api.click()
+
+        # Extract the new collection URL
+        created_collection_post_url = self.driver.current_url
+        print("Extracted Collection URL:", created_collection_post_url)
+        return created_collection_post_url"""
+
+
+    def enter_key_post_api(self, key):
+
+            """self.driver.find_element(By.ID, "builder_add_input_block").click()
+            time.sleep(5)
+            self.driver.find_element(By.ID, "builder_sidebar_param_0").click()
+            time.sleep(5)"""
+
+            self.driver.find_element(By.ID, "param_expand").click()
+            time.sleep(3)
+
+            # Wait for the input field to be clickable
+            workspace_input = WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable((By.ID, "param_3_input"))
+            )
+            workspace_input.clear()
+            workspace_input.send_keys(key)
+
+            # ID selector
+            datatype_dropdown = WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable((By.ID, "param_0_select_clickable"))
+            )
+            datatype_dropdown.click()
+
+            # wait for the option to be clickable
+            string_button = WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable((By.ID, "param_0_select_option_0"))
+            )
+            string_button.click()
+
+            print("Test successful")
+
+
+
+
+    def enter_key_put_api(self, key):
+
+            """self.driver.find_element(By.ID, "param_expand").click()
+            time.sleep(3)"""
+
+            # Wait for the input field to be clickable
+            workspace_input = WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable((By.ID, "param_3_input"))
+            )
+            workspace_input.clear()
+            workspace_input.send_keys(key)
+
+            # ID selector
+            datatype_dropdown = WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable((By.ID, "param_3_select_clickable"))
+            )
+            datatype_dropdown.click()
+
+            # wait for the option to be clickable
+            string_button = WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable((By.ID, "param_3_select_option_0"))
+            )
+            string_button.click()
+
+            print("Test successful")
+
+    def input_add_button(self):
+            input_add_button = WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable((By.ID, "sidebar_btn_continue"))
+            )
+            input_add_button.click()
+
+    def  param_delete(self):
+        param_delete = WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable((By.ID, "body_raw_0_delete"))
+            )
+        param_delete.click()
+
+        self.driver.find_element(By.ID, "modal_right-btn").click()
+
+    def raw_delete(self):
+        raw_delete = WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable((By.ID, "body_raw_delete"))
+            )
+        raw_delete.click()
+
+        self.driver.find_element(By.ID, "modal_left-btn").click()
+
+
+    def add_form_data_input_field(self, key):
+
+        self.driver.find_element(By.ID, "builder_add_input_block").click()
+
+        form_data = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "builder_sidebar_body_0"))
+        )
+        form_data.click()
+
+        # Wait for the input field to be clickable
+        workspace_input = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "body_formData_0_input"))
+        )
+        workspace_input.clear()
+        workspace_input.send_keys(key)
+
+        # ID selector
+        datatype_dropdown = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "body_formData_0_select_clickable"))
+        )
+        datatype_dropdown.click()
+
+        # wait for the option to be clickable
+        string_button = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "body_formData_0_select_option_1"))
+        )
+        string_button.click()
+
+        """self.driver.find_element(By.ID, "sidebar_btn_continue").click()"""
+
+        continue_button = WebDriverWait(self.driver, 10).until(
+            EC.visibility_of_element_located((By.ID, "sidebar_btn_continue"))
+        )
+        continue_button.click()
+
+        """self.driver.find_element(By.XPATH, "//button[contains(@class, 'Button_btn__zZlFC')]").click()"""
+
+    def code_block(self):
+            code_block = WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable((By.XPATH, "//button[contains(@class, 'Button_btn__zZlFC')]"))
+            )
+            code_block.click()
+
+
+
+
 
