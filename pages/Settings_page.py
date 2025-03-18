@@ -49,3 +49,13 @@ class SettingsPage:
         WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable((By.ID, "settings_purchase_history"))
         ).click()
+
+    def receipt(self):
+        WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "0purchase_history_receipt"))
+        ).click()
+
+    def invoice(self):
+        WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "0purchase_history_invoice"))
+        ).click()

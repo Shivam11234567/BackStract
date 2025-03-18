@@ -55,7 +55,7 @@ class TestSettings:
         settings.settings_billings()
         time.sleep(5)
 
-    def test_settings_purchase_history_page(self, driver):
+    def test_settings_purchase_history_page_receipt(self, driver):
         print("test_settings_purchase_history_page")
 
         # Login Steps
@@ -74,6 +74,29 @@ class TestSettings:
         settings.settings_purchase_history()
         time.sleep(5)
 
+        settings.receipt()
+        print("Clicked Receipt Button")
 
 
+    def test_settings_purchase_history_page_invoice(self, driver):
+        print("test_settings_purchase_history_page")
+
+        # Login Steps
+        login_page = LoginPage(driver)
+        login_page.navigate()
+        login_page.enter_email("shivamtesting7@gmail.com")
+        login_page.enter_password("Pass@9988")
+        login_page.click_login_button()
+
+        time.sleep(4)
+
+        # Navigating to Settings
+        settings = SettingsPage(driver)
+        settings.navigate_settings()
+        print("Clicked Settings Button")
+        settings.settings_purchase_history()
+        time.sleep(5)
+
+        settings.invoice()
+        print("Clicked Invoice Button")
 

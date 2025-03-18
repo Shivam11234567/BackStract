@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException, StaleElementReferenceException
 import time
 
 class WorkspacePage:
@@ -411,7 +412,65 @@ class WorkspacePage:
             )
             code_block.click()
 
+    def function_block_btn(self):
+
+        code_block_button = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "function_block_btn"))
+        )
+        code_block_button.click()
 
 
+    def file_upload(self):
+        file_upload_dropdown = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, "//li[text()='Upload A File']"))
+        )
+        file_upload_dropdown.click()
 
+        # wait for the option to be clickable
+        file_upload_button = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, "//li[contains(text(), 'Upload A File')]"))
+        )
+        file_upload_button.click()
+
+    def database_requests(self):
+        database_requests = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, "//h2[contains(text(), 'database requests')]"))
+        )
+        database_requests.click()
+
+    def query_get_a_record(self):
+        query_get_a_record = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, "//li[contains(text(), 'Query Get a Record')]"))
+        )
+        query_get_a_record.click()
+
+    def choose_table(self):
+        choose_table = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, "//h3[contains(text(), 'students')]"))
+        )
+        choose_table.click()
+
+    def query_get_a_record_student(self):
+        try:
+            # Print the current URL for debugging
+            print("Current URL:", self.driver.current_url)
+
+            # Wait for the element to be visible
+            element = WebDriverWait(self.driver, 20).until(
+                EC.visibility_of_element_located((By.XPATH, "your_locator"))
+            )
+            print("Element found:", element.text)
+
+        except TimeoutException:
+            # Print the page source and take a screenshot for debugging
+            print("Page source:", self.driver.page_source)
+            self.driver.save_screenshot("timeout_error.png")
+            raise TimeoutException("Element not found within the specified time")
+
+        except StaleElementReferenceException:
+            # Re-locate the element if it becomes stale
+            element = WebDriverWait(self.driver, 20).until(
+                EC.visibility_of_element_located((By.XPATH, "your_locator"))
+            )
+            print("Re-located element:", element.text)
 

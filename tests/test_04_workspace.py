@@ -599,5 +599,135 @@ class TestDashboard:
         time.sleep(60)
 
         dashboard.go_to_dashboard()
-        print("Go TO Dashboard Button CLicked Succesfully and Deployed Succesfully Done")
+        print("Go TO Dashboard Button CLicked Successfully and Deployed Successfully Done")
         time.sleep(30)
+
+
+    def test_with_post_api_input_add_form_data_upload_file(self, driver):
+        print("clicked collections successfully")
+        login_page = LoginPage(driver)
+        login_page.navigate()
+        login_page.enter_email("shivamtesting7@gmail.com")
+        login_page.enter_password("Pass@9988")
+        login_page.click_login_button()
+
+        time.sleep(4)
+
+        dashboard = WorkspacePage(driver)
+        dashboard.navigate()
+        workspace_url = dashboard.click_workspace_name()  # Extracts the URL dynamically
+        print("Navigated to extracted workspace URL:", workspace_url)
+        time.sleep(5)
+
+        driver.get(workspace_url)  # Navigate to the extracted workspace URL
+        time.sleep(5)
+
+        # Step 3: Open Collection
+        dashboard.collection1()
+        print("Clicked 'Collection' button successfully")
+        time.sleep(5)
+
+        # Step 4: Open API Builder
+        created_collection_post_url = dashboard.post_api()  # Extracts the URL dynamically
+        print("Navigated to extracted collections URL:", created_collection_post_url)
+        time.sleep(10)
+
+        driver.get(created_collection_post_url)  # Navigate to the extracted collection URL
+        time.sleep(5)
+
+        dashboard.post_api()
+        print("Clicked 'post api' click successfully")
+        time.sleep(10)
+
+        dashboard.add_form_data_input_field("file_upload")
+        print("Clicked 'form data' successfully")
+        time.sleep(10)
+
+        print("pass the test")
+
+        """dashboard.code_block()
+        print("Clicked 'code block' successfully")
+        time.sleep(10)"""
+
+        dashboard.function_block_btn()
+        print("Clicked 'code block' successfully")
+        time.sleep(10)
+
+        dashboard.file_upload()
+        print("Clicked 'file upload' successfully")
+        time.sleep(10)
+
+        dashboard.run_debug()
+        print("run and debug' Click successfully")
+        time.sleep(10)
+
+        dashboard.run()
+        print("clicked run button successfully")
+        time.sleep(10)
+
+        dashboard.publish()
+        print("Publish Button clicked Successfully")
+        time.sleep(60)
+
+        dashboard.go_to_dashboard()
+        print("Go TO Dashboard Button CLicked Successfully and Deployed Successfully Done")
+        time.sleep(30)
+
+
+    def test_with_put_api_input_query_get_a_record(self, driver):
+        print("clicked collections successfully")
+        login_page = LoginPage(driver)
+        login_page.navigate()
+        login_page.enter_email("shivamtesting7@gmail.com")
+        login_page.enter_password("Pass@9988")
+        login_page.click_login_button()
+
+        time.sleep(4)
+
+        dashboard = WorkspacePage(driver)
+        dashboard.navigate()
+        workspace_url = dashboard.click_workspace_name()  # Extracts the URL dynamically
+        print("Navigated to extracted workspace URL:", workspace_url)
+        time.sleep(10)
+
+        driver.get(workspace_url)  # Navigate to the extracted workspace URL
+        time.sleep(10)
+
+        dashboard.collection1()
+        print("Clicked 'Collection' button successfully")
+        time.sleep(10)
+
+        created_collection_put_url = dashboard.put_api()  # Extracts the URL dynamically
+        print("Navigated to extracted collections URL:", created_collection_put_url)
+        time.sleep(10)
+
+        driver.get(created_collection_put_url)  # Navigate to the extracted collection URL
+        time.sleep(10)
+
+        dashboard.put_api()
+        print("Clicked 'Put api' click successfully")
+        time.sleep(10)
+
+        dashboard.function_block_btn()
+        print("Clicked 'code block' successfully")
+        time.sleep(10)
+
+        dashboard.database_requests()
+        print("Clicked 'database requests' successfully")
+
+        dashboard.query_get_a_record()
+        print("Clicked 'query get a record' successfully")
+
+        dashboard.choose_table()
+        print("Clicked 'choose table' successfully")
+
+        dashboard.query_get_a_record_student()
+        print("Clicked 'query get a record student' successfully")
+
+
+
+
+
+
+
+
