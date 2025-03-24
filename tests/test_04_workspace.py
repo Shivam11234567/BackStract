@@ -570,21 +570,34 @@ class TestDashboard:
 
         dashboard.post_api()
         print("Clicked 'post api' click successfully")
-        time.sleep(10)
+        time.sleep(5)
 
         dashboard.add_form_data_input_field("file_upload")
         print("Clicked 'form data' successfully")
-        time.sleep(10)
+        time.sleep(5)
 
         print("pass the test")
 
-        """dashboard.input_add_button()
-        print("Input Add Button' successfully")
-        time.sleep(10)"""
-
         dashboard.code_block()
         print("Clicked 'code block' successfully")
-        time.sleep(10)
+        time.sleep(5)
+
+        dashboard.code_block_function_block_btn()
+        print("clicked successfully")
+        time.sleep(2)
+
+        dashboard.code_block_file_upload()
+        print("file upload Button clicked successfully")
+        time.sleep(2)
+
+        dashboard.upload_a_file_cloud_existing_variable()
+        time.sleep(2)
+
+        dashboard.return_value_upload_a_file()
+        time.sleep(2)
+
+        dashboard.upload_a_file_return_as("file_doc")
+        time.sleep(2)
 
         dashboard.run_debug()
         print("'run and debug' Click successfully")
@@ -651,11 +664,15 @@ class TestDashboard:
 
         dashboard.function_block_btn()
         print("Clicked 'code block' successfully")
-        time.sleep(10)
+        time.sleep(5)
 
-        dashboard.file_upload()
+        """dashboard.file_upload()
         print("Clicked 'file upload' successfully")
-        time.sleep(10)
+        time.sleep(5)"""
+
+        dashboard.code_block_file_upload()
+        print("file upload Button clicked successfully")
+        time.sleep(5)
 
         dashboard.run_debug()
         print("run and debug' Click successfully")
@@ -987,17 +1004,225 @@ class TestDashboard:
         login_page.enter_password("Pass@9988")
         login_page.click_login_button()
 
+    """def test_with_put_api_file_upload(self,driver):
+        print("clicked collections successfully")
+        login_page = LoginPage(driver)
+        login_page.navigate()
+        login_page.enter_email("shivamtesting7@gmail.com")
+        login_page.enter_password("Pass@9988")
+        login_page.click_login_button()
+
+        time.sleep(4)
+
+        dashboard = WorkspacePage(driver)
+        dashboard.navigate()
+        workspace_url = dashboard.click_workspace_name()  # Extracts the URL dynamically
+        print("Navigated to extracted workspace URL:", workspace_url)
+        time.sleep(10)
+
+        driver.get(workspace_url)  # Navigate to the extracted workspace URL
+        time.sleep(10)
+
+        dashboard.collection1()
+        print("Clicked 'Collection' button successfully")
+        time.sleep(10)
+
+        created_collection_put_url = dashboard.put_api()  # Extracts the URL dynamically
+        print("Navigated to extracted collections URL:", created_collection_put_url)
+        time.sleep(10)
+
+        driver.get(created_collection_put_url)  # Navigate to the extracted collection URL
+        time.sleep(10)
+
+        dashboard.put_api()
+        print("Clicked 'Put api' click successfully")
+        time.sleep(10)
+
+        dashboard.builder_add_input_block()
+        print("clicked successfully")
+
+        dashboard.add_form_data_input_field("file_upload")
+        print("Clicked 'form data' successfully")
+        time.sleep(5)
+
+        dashboard.code_block_function_block_btn()
+        print("clicked successfully")
+        time.sleep(2)
+
+        dashboard.code_block_file_upload()
+        print("file upload Button clicked successfully")
+        time.sleep(2)"""
+
+    def test_with_put_api_data_manipulations_create_a_new_variable(self,driver):
+        print("clicked collections successfully")
+        login_page = LoginPage(driver)
+        login_page.navigate()
+        login_page.enter_email("shivamtesting7@gmail.com")
+        login_page.enter_password("Pass@9988")
+        login_page.click_login_button()
+
+        time.sleep(2)
+
+        dashboard = WorkspacePage(driver)
+        dashboard.navigate()
+        workspace_url = dashboard.click_workspace_name()  # Extracts the URL dynamically
+        print("Navigated to extracted workspace URL:", workspace_url)
+        time.sleep(10)
+
+        driver.get(workspace_url)  # Navigate to the extracted workspace URL
+        time.sleep(10)
+
+        dashboard.collection1()
+        print("Clicked 'Collection' button successfully")
+        time.sleep(10)
+
+        created_collection_put_url = dashboard.put_api()  # Extracts the URL dynamically
+        print("Navigated to extracted collections URL:", created_collection_put_url)
+        time.sleep(10)
+
+        driver.get(created_collection_put_url)  # Navigate to the extracted collection URL
+        time.sleep(10)
+
+        dashboard.put_api()
+        print("Clicked 'Put api' click successfully")
+        time.sleep(5)
+
+        dashboard.function_block_btn()
+        print("Clicked 'code block' successfully")
+        time.sleep(2)
+
+        dashboard.code_block_data_manipulations()
+        print("Clicked 'data manipulations' successfully")
+        time.sleep(5)
+
+        dashboard.create_a_new_variable_input_var_name("name")
+        print("Variable name enter successfully")
+        time.sleep(2)
+
+        dashboard.data_manipulations_var_type()
+        print("Pass")
+        time.sleep(2)
+
+        dashboard.data_manipulations_field_type()
+        print("Pass")
+        time.sleep(2)
+
+        dashboard.data_manipulations_add_btn()
+        print("Pass")
+        time.sleep(5)
 
 
+    def test_with_put_api_data_manipulations_update_a_variable(self,driver):
+        print("clicked collections successfully")
+        login_page = LoginPage(driver)
+        login_page.navigate()
+        login_page.enter_email("shivamtesting7@gmail.com")
+        login_page.enter_password("Pass@9988")
+        login_page.click_login_button()
+
+        time.sleep(2)
+
+        dashboard = WorkspacePage(driver)
+        dashboard.navigate()
+        workspace_url = dashboard.click_workspace_name()  # Extracts the URL dynamically
+        print("Navigated to extracted workspace URL:", workspace_url)
+        time.sleep(10)
+
+        driver.get(workspace_url)  # Navigate to the extracted workspace URL
+        time.sleep(10)
+
+        dashboard.collection1()
+        print("Clicked 'Collection' button successfully")
+        time.sleep(10)
+
+        created_collection_put_url = dashboard.put_api()  # Extracts the URL dynamically
+        print("Navigated to extracted collections URL:", created_collection_put_url)
+        time.sleep(10)
+
+        driver.get(created_collection_put_url)  # Navigate to the extracted collection URL
+        time.sleep(10)
+
+        dashboard.put_api()
+        print("Clicked 'Put api' click successfully")
+        time.sleep(5)
+
+        dashboard.function_block_btn()
+        print("Clicked 'code block' successfully")
+        time.sleep(2)
+
+        dashboard.code_block_data_manipulations_update_a_variable()
+        print("Clicked 'data manipulations' successfully")
+        time.sleep(5)
+
+        dashboard.code_block_data_manipulations_existing_variable()
+        print("clicked")
+        time.sleep(2)
+
+        dashboard.data_manipulations_update_a_variable_field_value()
+        print("clicked")
+        time.sleep(2)
+
+        dashboard.data_manipulations_add_btn()
+        print("Pass")
+        time.sleep(5)
 
 
+    def test_with_put_api_data_manipulations_create_a_new_list(self,driver):
+        print("clicked collections successfully")
+        login_page = LoginPage(driver)
+        login_page.navigate()
+        login_page.enter_email("shivamtesting7@gmail.com")
+        login_page.enter_password("Pass@9988")
+        login_page.click_login_button()
 
+        time.sleep(2)
 
+        dashboard = WorkspacePage(driver)
+        dashboard.navigate()
+        workspace_url = dashboard.click_workspace_name()  # Extracts the URL dynamically
+        print("Navigated to extracted workspace URL:", workspace_url)
+        time.sleep(10)
 
+        driver.get(workspace_url)  # Navigate to the extracted workspace URL
+        time.sleep(10)
 
+        dashboard.collection1()
+        print("Clicked 'Collection' button successfully")
+        time.sleep(10)
 
+        created_collection_put_url = dashboard.put_api()  # Extracts the URL dynamically
+        print("Navigated to extracted collections URL:", created_collection_put_url)
+        time.sleep(10)
 
+        driver.get(created_collection_put_url)  # Navigate to the extracted collection URL
+        time.sleep(10)
 
+        dashboard.put_api()
+        print("Clicked 'Put api' click successfully")
+        time.sleep(5)
 
+        dashboard.function_block_btn()
+        print("Clicked 'code block' successfully")
+        time.sleep(2)
+
+        dashboard.code_block_data_manipulations_create_a_new_list()
+        print("Clicked 'data manipulations' successfully")
+        time.sleep(5)
+
+        dashboard.code_block_data_manipulations_create_a_new_list_list()
+        print("Clicked 'data manipulations' successfully")
+        time.sleep(5)
+
+        dashboard.var_name("user_list")
+        print("clicked")
+        time.sleep(5)
+
+        dashboard.data_manipulations_create_a_new_list_var_type()
+        print("clicked")
+        time.sleep(5)
+
+        dashboard.data_manipulations_add_btn()
+        print("Pass")
+        time.sleep(5)
 
 

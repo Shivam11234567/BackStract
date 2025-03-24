@@ -430,6 +430,53 @@ class WorkspacePage:
         )
         file_upload_button.click()
 
+
+
+    def code_block_file_upload(self):
+        code_block_file_upload_dropdown = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.ID, "fs_cat_1"))
+        )
+        print("file upload dropdown found.")
+        code_block_file_upload_dropdown.click()
+
+        file_upload_code_block = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.XPATH, "//li[text()='Upload A File']"))
+        )
+        file_upload_code_block.click()
+
+    def upload_a_file_cloud_existing_variable(self):
+        existing_variable_dropdown = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.ID, "fs_storage_type"))
+        )
+        print("Existing Variable (Type: file)dropdown found.")
+        existing_variable_dropdown.click()
+
+        existing_variable_select = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.CLASS_NAME, "fs_storage_type__form_data--file_upload"))
+        )
+        existing_variable_select.click()
+
+    def return_value_upload_a_file(self):
+        return_value_dropdown = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.ID, "fs_storage_return_value"))
+        )
+        print("Existing Variable (Type: file)dropdown found.")
+        return_value_dropdown.click()
+
+        return_value_select = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.CLASS_NAME, "fs_storage_return_value__file--file_url"))
+        )
+        return_value_select.click()
+
+    def upload_a_file_return_as(self,field_value):
+        return_as_input = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "fs_file_var"))
+        )
+        return_as_input.clear()
+        return_as_input.send_keys(field_value)
+
+
+
     def database_requests(self):
         database_requests = WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, "//h2[contains(text(), 'database requests')]"))
@@ -671,6 +718,157 @@ class WorkspacePage:
         )
         id_option.click()
         print("Successfully selected 'id_option' from the Table column keys dropdown.")
+
+    def builder_add_input_block(self):
+        self.driver.find_element(By.ID, "builder_add_input_block").click()
+        time.sleep(3)
+
+    def code_block_function_block_btn(self):
+        self.driver.find_element(By.ID, "function_block_btn").click()
+        time.sleep(3)
+
+    def code_block_data_manipulations(self):
+        code_block_data_manipulations_dropdown = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.ID, "fs_cat_3"))
+        )
+        print("file upload dropdown found.")
+        code_block_data_manipulations_dropdown.click()
+
+        data_manipulations_code_block = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.XPATH, "//li[text()='Create a new variable']"))
+        )
+        data_manipulations_code_block.click()
+
+    def create_a_new_variable_input_var_name(self,field_value):
+        value_name_input = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "fs__var-name"))
+        )
+        value_name_input.clear()
+        value_name_input.send_keys(field_value)
+
+    def data_manipulations_var_type(self):
+        code_block_var_type_dropdown = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.ID, "fs__var-type"))
+        )
+        print("file upload dropdown found.")
+        code_block_var_type_dropdown.click()
+
+        var_type_code_block = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.CLASS_NAME, "fs__var-type--any"))
+        )
+        var_type_code_block.click()
+
+    def data_manipulations_field_type(self):
+        field_type_dropdown = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.ID, "fs__var-value"))
+        )
+        print("Field Value dropdown found.")
+        field_type_dropdown.click()
+
+        field_type_code_block = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.CLASS_NAME, "fs__var-value--query-id"))
+        )
+        field_type_code_block.click()
+
+    def data_manipulations_add_btn(self):
+        create_var_add_btn = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "fs__add_block"))
+        )
+        create_var_add_btn.click()
+
+
+    def code_block_data_manipulations_update_a_variable(self):
+        code_block_data_manipulations_dropdown = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.ID, "fs_cat_3"))
+        )
+        print("clicked")
+        code_block_data_manipulations_dropdown.click()
+
+        data_manipulations_code_block = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.XPATH, "//li[text()='Update a variable']"))
+        )
+        data_manipulations_code_block.click()
+
+    def code_block_data_manipulations_existing_variable(self):
+        existing_variable_data_manipulations_dropdown = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.ID, "fs__var-existing"))
+        )
+        print("clicked")
+        existing_variable_data_manipulations_dropdown.click()
+
+        data_manipulations_existing_variable = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.XPATH, "fs__var-existing--query-id"))
+        )
+        data_manipulations_existing_variable.click()
+
+    def data_manipulations_update_a_variable_field_value(self):
+        field_type_dropdown = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.ID, "fs__var-value"))
+        )
+        print("clicked")
+        field_type_dropdown.click()
+
+        field_type_code_block = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.CLASS_NAME, "fs__var-value--query-user"))
+        )
+        field_type_code_block.click()
+
+    def code_block_data_manipulations_create_a_new_list(self):
+        code_block_data_manipulations_dropdown = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.ID, "fs_cat_3"))
+        )
+        print("clicked")
+        code_block_data_manipulations_dropdown.click()
+
+        data_manipulations_code_block = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.XPATH, "//li[text()='Create a new list/dictionary']"))
+        )
+        data_manipulations_code_block.click()
+
+
+    def code_block_data_manipulations_create_a_new_list_list(self):
+        container_type_dropdown = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.ID, "fs__var-type"))
+        )
+        print("file upload dropdown found.")
+        container_type_dropdown.click()
+
+        container_type_code_block = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.CLASS_NAME, "fs__var-type--list"))
+        )
+        container_type_code_block.click()
+
+    def var_name(self,field_value):
+        value_name_input = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "fs__var-name"))
+        )
+        value_name_input.clear()
+        value_name_input.send_keys(field_value)
+
+    def data_manipulations_create_a_new_list_var_type(self):
+        create_a_new_list_var_type_dropdown = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.ID, "fs__var-data-type"))
+        )
+        print("file upload dropdown found.")
+        create_a_new_list_var_type_dropdown.click()
+
+        create_a_new_list_var_type = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.CLASS_NAME, "fs__var-data-type--any"))
+        )
+        create_a_new_list_var_type.click()
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
