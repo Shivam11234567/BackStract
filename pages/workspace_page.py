@@ -111,8 +111,6 @@ class WorkspacePage:
 
     def select_postgres_database(self, driver):
 
-
-
         # Click on the database dropdown
         database_dropdown = WebDriverWait(self.driver, 15).until(
             EC.element_to_be_clickable((By.ID, "import_db-list"))
@@ -451,26 +449,247 @@ class WorkspacePage:
         choose_table.click()
 
     def query_get_a_record_student(self):
-        try:
-            # Print the current URL for debugging
-            print("Current URL:", self.driver.current_url)
+         table_column_keys_dropdown = WebDriverWait(self.driver, 15).until(
+             EC.element_to_be_clickable((By.ID, "table__col__key"))
+         )
+         print("Table Column Key dropdown found.")
+         table_column_keys_dropdown.click()
 
-            # Wait for the element to be visible
-            element = WebDriverWait(self.driver, 20).until(
-                EC.visibility_of_element_located((By.XPATH, "your_locator"))
-            )
-            print("Element found:", element.text)
+         id_option = WebDriverWait(self.driver, 15).until(
+             EC.element_to_be_clickable((By.CLASS_NAME, "table__col__key--id"))
+         )
+         id_option.click()
+         print("Successfully selected 'id_option' from the Table column keys dropdown.")
 
-        except TimeoutException:
-            # Print the page source and take a screenshot for debugging
-            print("Page source:", self.driver.page_source)
-            self.driver.save_screenshot("timeout_error.png")
-            raise TimeoutException("Element not found within the specified time")
+    def field_value(self):
 
-        except StaleElementReferenceException:
-            # Re-locate the element if it becomes stale
-            element = WebDriverWait(self.driver, 20).until(
-                EC.visibility_of_element_located((By.XPATH, "your_locator"))
-            )
-            print("Re-located element:", element.text)
+        field_value_dropdown = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.ID, "field__value__select"))
+        )
+        print("Field Value dropdown found.")
+        field_value_dropdown.click()
+
+        field_value_code_block = WebDriverWait(self.driver, 5).until(
+                EC.element_to_be_clickable((By.CLASS_NAME, "field__value__select--code_block-students_edited_record-id"))
+        )
+        field_value_code_block.click()
+
+
+    def return_as_input(self, field_value):
+        """Enter field value in the return as field."""
+        return_as_input = WebDriverWait(self.driver, 10).until(
+        EC.element_to_be_clickable((By.ID, "return__var__input"))
+        )
+        return_as_input.clear()
+        return_as_input.send_keys(field_value)
+
+    def comment_input(self, field_value):
+        """Enter comment in the comment field."""
+        comment_input = WebDriverWait(self.driver, 10).until(
+        EC.element_to_be_clickable((By.ID, "block__comment__input"))
+        )
+        comment_input.clear()
+        comment_input.send_keys(field_value)
+
+    def btn__add(self):
+        WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.ID, "btn__add__fs"))
+        ).click()
+
+    def output_block_btn(self):
+        output_block_btn = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.ID, "output_block_btn"))
+        )
+        output_block_btn.click()
+
+    def add_output_return_value_dropdown(self):
+        return_value_dropdown = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.ID, "fs__output"))
+        )
+        print("return value dropdown found.")
+        return_value_dropdown.click()
+
+        select_return_value = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.CLASS_NAME, "fs__output--code_block-student"))
+        )
+        select_return_value.click()
+
+        print("Successfully selected 'select_return_value' from the return value dropdown.")
+
+    def add_output_add_button(self):
+        WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.ID, "continue__btn"))
+        ).click()
+
+    def output_return_as_input(self, field_value):
+        """Enter field value in the return as field."""
+        return_as_input = WebDriverWait(self.driver, 10).until(
+        EC.element_to_be_clickable((By.ID, "fs__return__as"))
+        )
+        return_as_input.clear()
+        return_as_input.send_keys(field_value)
+
+    def query_has_a_record(self):
+        query_has_a_record = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, "//li[contains(text(), 'Query Has a Record')]"))
+        )
+        query_has_a_record.click()
+
+
+    def has_a_record_field_value(self):
+
+        field_value_dropdown = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.ID, "fs__field__value__input"))
+        )
+        print("Field Value dropdown found.")
+        field_value_dropdown.click()
+
+        field_value_code_block = WebDriverWait(self.driver, 5).until(
+                EC.element_to_be_clickable((By.CLASS_NAME, "fs__field__value__input--code_block-student-id"))
+        )
+        field_value_code_block.click()
+
+    def query_has_a_record_student(self):
+
+        table_column_keys_dropdown = WebDriverWait(self.driver, 15).until(
+            EC.element_to_be_clickable((By.ID, "table__column__select"))
+        )
+        print("Table Column Key dropdown found.")
+        table_column_keys_dropdown.click()
+
+        id_option = WebDriverWait(self.driver, 15).until(
+            EC.element_to_be_clickable((By.CLASS_NAME, "table__column__select--id"))
+        )
+        id_option.click()
+        print("Successfully selected 'id_option' from the Table column keys dropdown.")
+
+
+    def has_a_record_return_as_input(self, field_value):
+        """Enter field value in the return as field."""
+        return_as_input = WebDriverWait(self.driver, 10).until(
+        EC.element_to_be_clickable((By.ID, "fs__return__var"))
+        )
+        return_as_input.clear()
+        return_as_input.send_keys(field_value)
+
+    def has_a_record_comment_input(self, field_value):
+        """Enter comment in the comment field."""
+        comment_input = WebDriverWait(self.driver, 10).until(
+        EC.element_to_be_clickable((By.ID, "fs__block_comment"))
+        )
+        comment_input.clear()
+        comment_input.send_keys(field_value)
+
+    def has_a_record_btn__add(self):
+        WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.ID, "fs__add__btn"))
+        ).click()
+
+    def query_get_all_record(self):
+        query_get_all_record = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, "//li[contains(text(), 'Query Get all Record')]"))
+        )
+        query_get_all_record.click()
+
+    def query_get_all_record_student(self):
+
+        table_column_keys_dropdown = WebDriverWait(self.driver, 15).until(
+            EC.element_to_be_clickable((By.ID, "table__column__select"))
+        )
+        print("Table Column Key dropdown found.")
+        table_column_keys_dropdown.click()
+
+        id_option = WebDriverWait(self.driver, 15).until(
+            EC.element_to_be_clickable((By.CLASS_NAME, "table__column__select--id"))
+        )
+        id_option.click()
+        print("Successfully selected 'id_option' from the Table column keys dropdown.")
+
+    def get_all_record_field_value(self):
+
+        field_value_dropdown = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.ID, "fs__field__value"))
+        )
+        print("Field Value dropdown found.")
+        field_value_dropdown.click()
+
+        field_value_code_block = WebDriverWait(self.driver, 5).until(
+                EC.element_to_be_clickable((By.CLASS_NAME, "fs__field__value--code_block-student-id"))
+        )
+        field_value_code_block.click()
+
+    def get_all_record_sort(self):
+        get_all_record_sort_dropdown = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.ID, "sort__fs__input"))
+        )
+        print("sort dropdown found.")
+        get_all_record_sort_dropdown.click()
+
+        option = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, "//div[@role='option' and text()='Ascending']"))
+        )
+        option.click()
+
+    def get_all_record_return_as_input(self, field_value):
+        """Enter field value in the return as field."""
+        return_as_input = WebDriverWait(self.driver, 10).until(
+        EC.element_to_be_clickable((By.ID, "fs__return__var_input"))
+        )
+        return_as_input.clear()
+        return_as_input.send_keys(field_value)
+
+    def get_all_record_comment_input(self, field_value):
+        """Enter comment in the comment field."""
+        comment_input = WebDriverWait(self.driver, 10).until(
+        EC.element_to_be_clickable((By.ID, "fs__block__comment__input"))
+        )
+        comment_input.clear()
+        comment_input.send_keys(field_value)
+
+
+    def get_all_record_btn__add(self):
+        WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.ID, "btn__add__fs"))
+        ).click()
+
+    def query_add_record(self):
+        query_add_record = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, "//li[contains(text(), 'Query Get all Record')]"))
+        )
+        query_add_record.click()
+
+    def query_add_record_student(self):
+
+        table_column_keys_dropdown = WebDriverWait(self.driver, 15).until(
+            EC.element_to_be_clickable((By.ID, "table__column__select"))
+        )
+        print("Table Column Key dropdown found.")
+        table_column_keys_dropdown.click()
+
+        id_option = WebDriverWait(self.driver, 15).until(
+            EC.element_to_be_clickable((By.CLASS_NAME, "table__column__key--id"))
+        )
+        id_option.click()
+        print("Successfully selected 'id_option' from the Table column keys dropdown.")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
