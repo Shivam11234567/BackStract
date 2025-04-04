@@ -41,8 +41,6 @@ class WorkspacePage:
         print("Extracted Workspace URL:", workspace_url)
         return workspace_url
 
-
-
     def add_workspace_card(self):
         """Click to add a new workspace card."""
         self.driver.find_element(By.ID, "add_workspace_card").click()
@@ -838,6 +836,18 @@ class WorkspacePage:
         )
         container_type_code_block.click()
 
+    def code_block_data_manipulations_create_a_new_list_dictionary(self):
+        container_type_dropdown = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.ID, "fs__var-type"))
+        )
+        print("file upload dropdown found.")
+        container_type_dropdown.click()
+
+        container_type_code_block = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.CLASS_NAME, "fs__var-type--dictionary"))
+        )
+        container_type_code_block.click()
+
     def var_name(self,field_value):
         value_name_input = WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable((By.ID, "fs__var-name"))
@@ -857,27 +867,212 @@ class WorkspacePage:
         )
         create_a_new_list_var_type.click()
 
+    def code_block_data_list_add_element_at_start(self):
+        code_block_list_dropdown = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.ID, "fs_cat_7"))
+        )
+        print("list button clicked successful")
+        code_block_list_dropdown.click()
 
+        # selecting "Query Add Record"
+        add_record_option = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.XPATH, "//li[text()='Add element at start/end']"))
+        )
+        add_record_option.click()
 
+    def code_block_data_add_element_at_start_option(self):
+        var_operation_dropdown = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.ID, "fs__var-operation"))
+        )
+        print("Variable operation dropdown found.")
+        var_operation_dropdown.click()
 
+        option_text  = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.CLASS_NAME, "fs__var-operation--start"))
+        )
+        option_text .click()
 
+    def code_block_list_existing_variable(self):
+        existing_variable_dropdown = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.ID, "fs__var-exiting"))
+        )
+        print("Existing variable dropdown found and clicked")
+        existing_variable_dropdown.click()
 
+        selected_option  = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.CLASS_NAME, "fs__var-exiting--code_block-user_list"))
+        )
+        selected_option .click()
 
+    def code_block_list_var_type(self):
+        list_var_type = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.ID, "fs__var-type"))
+        )
+        print("Existing variable dropdown found and clicked")
+        list_var_type.click()
 
+        selected_option  = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.CLASS_NAME, "fs__var-type--any"))
+        )
+        selected_option .click()
 
+    def code_block_list_value(self):
+        list_value = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.ID, "fs__var-value"))
+        )
+        print("Existing variable dropdown found and clicked")
+        list_value.click()
 
+        selected_option  = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.CLASS_NAME, "fs__var-value--query-id"))
+        )
+        selected_option .click()
 
+    def code_block_data_list_remove_element_at_start(self):
+        code_block_list_dropdown = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.ID, "fs_cat_7"))
+        )
+        print("list button clicked successful")
+        code_block_list_dropdown.click()
 
+        # selecting "Query Add Record"
+        remove_element_option = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.XPATH, "//li[text()='Remove element at start/end']"))
+        )
+        remove_element_option.click()
 
+    def code_block_list_remove_element_at_start_existing_variable(self):
+        existing_variable_dropdown = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.ID, "fs__var-existing"))
+        )
+        print("Existing variable dropdown found and clicked")
+        existing_variable_dropdown.click()
 
+        selected_option  = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.CLASS_NAME, "fs__var-existing--code_block-user_list"))
+        )
+        selected_option .click()
 
+    def code_block_data_list_get_element_at_index(self):
+        code_block_list_dropdown = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.ID, "fs_cat_7"))
+        )
+        print("list button clicked successful")
+        code_block_list_dropdown.click()
 
+        # selecting "Query Add Record"
+        selected_option = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.XPATH, "//li[text()='Get element at index']"))
+        )
+        selected_option.click()
 
+    def code_block_list_get_element_at_index(self):
+        existing_variable_dropdown = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.ID, "fs__var-exiting"))
+        )
+        print("Existing variable dropdown found and clicked")
+        existing_variable_dropdown.click()
 
+        selected_option  = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.CLASS_NAME, "fs__var-exiting--code_block-user_list"))
+        )
+        selected_option .click()
 
+    def code_block_list_get_element_at_index_at_index(self, field_value):
+        """Enter comment in the comment field."""
+        at_index_input = WebDriverWait(self.driver, 10).until(
+        EC.element_to_be_clickable((By.ID, "fs__var-index-at"))
+        )
+        at_index_input.clear()
+        at_index_input.send_keys(field_value)
 
+    def code_block_list_get_element_at_index_return_value_as(self):
+        return_value_as_dropdown = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.ID, "fs__var-return"))
+        )
+        print("Existing variable dropdown found and clicked")
+        return_value_as_dropdown.click()
 
+        selected_option  = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.CLASS_NAME, "fs__var-return--code_block-user_list"))
+        )
+        selected_option .click()
 
+    def code_block_data_list_update_element_at_index(self):
+        code_block_list_dropdown = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.ID, "fs_cat_7"))
+        )
+        print("list button clicked successful")
+        code_block_list_dropdown.click()
+
+        # selecting "Query Add Record"
+        selected_option = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.XPATH, "//li[text()='Update element at index']"))
+        )
+        selected_option.click()
+
+    def code_block_data_list_update_element_at_index_value(self):
+        field_type_dropdown = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.ID, "fs__var-value"))
+        )
+        print("clicked")
+        field_type_dropdown.click()
+
+        field_type_code_block = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.CLASS_NAME, "fs__var-value--query-user"))
+        )
+        field_type_code_block.click()
+
+    def code_block_data_list_get_length(self):
+        code_block_list_dropdown = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.ID, "fs_cat_7"))
+        )
+        print("list button clicked successful")
+        code_block_list_dropdown.click()
+
+        # selecting "Query Add Record"
+        selected_option = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.XPATH, "//li[text()='Get length']"))
+        )
+        selected_option.click()
+
+    def code_block_list_get_length_value_as(self):
+        return_value_as_dropdown = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.ID, "fs__var-return"))
+        )
+        print("Existing variable dropdown found and clicked")
+        return_value_as_dropdown.click()
+
+        selected_option  = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.CLASS_NAME, "fs__var-return--code_block-students_edited_record-id"))
+        )
+        selected_option .click()
+
+    def code_block_data_list_empty_an_list(self):
+        code_block_list_dropdown = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.ID, "fs_cat_7"))
+        )
+        print("list button clicked successful")
+        code_block_list_dropdown.click()
+
+        # selecting "Query Add Record"
+        selected_option = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.XPATH, "//li[text()='Empty an List']"))
+        )
+        selected_option.click()
+
+    def code_block_data_list_empty_an_list_bool(self):
+        code_block_list_dropdown = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.ID, "fs_cat_7"))
+        )
+        print("list button clicked successful")
+        code_block_list_dropdown.click()
+
+        # selecting "Query Add Record"
+        selected_option = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable((By.XPATH, "//li[text()='Element in List(Bool)']"))
+        )
+        selected_option.click()
 
 
 
