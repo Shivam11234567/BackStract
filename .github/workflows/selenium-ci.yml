@@ -22,3 +22,7 @@ jobs:
 
     - name: Run Selenium login tests
       run: pytest tests/ --maxfail=1 --disable-warnings -v
+
+
+
+
