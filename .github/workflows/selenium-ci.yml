@@ -17,7 +17,8 @@ jobs:
 
     - name: Install dependencies
       run: |
+        python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Run Selenium tests
-      run: pytest selenium_tests/ --maxfail=1 --disable-warnings -v
+    - name: Run Selenium login tests
+      run: pytest tests/ --maxfail=1 --disable-warnings -v
