@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Set up Python 3.9
+    - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.9'
@@ -18,33 +18,42 @@ jobs:
     - name: Install system dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y wget unzip
+        sudo apt-get install -y wget unzip libxss1 libappindicator1 libindicator7
 
     - name: Install Chrome
       run: |
-        wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
         sudo apt install ./google-chrome-stable_current_amd64.deb -y
-        rm google-chrome-stable_current_amd64.deb
-        google-chrome --version
+        sudo rm google-chrome-stable_current_amd64.deb
+        echo "Chrome version: $(google-chrome --version)"
 
-    - name: Install Chromedriver
+    - name: Install ChromeDriver
       run: |
         CHROME_VERSION=$(google-chrome --version | awk '{print $3}')
-        wget https://chromedriver.storage.googleapis.com/${CHROME_VERSION}/chromedriver_linux64.zip
+        CHROME_MAJOR_VERSION=${CHROME_VERSION%.*.*}
+        wget -q https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_MAJOR_VERSION}
+        CHROMEDRIVER_VERSION=$(cat LATEST_RELEASE_${CHROME_MAJOR_VERSION})
+        wget -q https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip
         unzip chromedriver_linux64.zip
         sudo mv chromedriver /usr/local/bin/
-        chromedriver --version
+        sudo chmod +x /usr/local/bin/chromedriver
+        echo "ChromeDriver version: $(chromedriver --version)"
 
     - name: Install Python dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pytest selenium webdriver-manager pytest-html
+        pip install pytest==7.4.0 selenium==4.15.2 webdriver-manager==4.0.1 pytest-html==4.1.1
+
+    - name: Verify environment
+      run: |
+        python -c "import pytest; print(f'Pytest version: {pytest.__version__}')"
+        python -c "from selenium import webdriver; print('Selenium imports successfully')"
 
     - name: Run tests
       run: |
         python -m pytest tests/test_02_login.py -v --html=test-reports/report.html
       env:
-        DISPLAY: :99
+        DISPLAY: ":99"
 
     - name: Upload test results
       uses: actions/upload-artifact@v4
