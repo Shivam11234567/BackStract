@@ -1,13 +1,14 @@
-import pytest
-from selenium import webdriver
-import os
-
-
-
 @pytest.fixture
 def driver():
-    #Fixture to initialize
-    driver = webdriver.Chrome() # Initialize Chrome WebDriver
-    driver.maximize_window()    # Maximize the browser window
-    yield driver                # Provide the driver to the test
-    driver.quit()               # Quit the driver after the test
+    from selenium import webdriver
+    from selenium.webdriver.chrome.options import Options
+
+    options = Options()
+    options.add_argument("--headless")  # Run in headless mode for CI
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+
+    driver = webdriver.Chrome(options=options)
+    driver.maximize_window()
+    yield driver
+    driver.quit()
