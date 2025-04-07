@@ -1,28 +1,45 @@
-name: Selenium UI Tests
+name: Selenium Tests
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  selenium-tests:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.10'
+        python-version: '3.9'
 
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        pip install pytest selenium webdriver-manager
 
-    - name: Run Selenium login tests
-      run: pytest tests/ --maxfail=1 --disable-warnings -v
+    - name: Install Chrome
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y chromium-browser chromium-chromedriver
 
+    - name: Run tests
+      run: |
+        python -m pytest tests/test_02_login.py -v
+      env:
+        DISPLAY: :99
 
-
-
+    - name: Upload test results
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: test-results
+        path: |
+          test-reports/
+          *.log

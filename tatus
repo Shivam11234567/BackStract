@@ -1,0 +1,71 @@
+[33mcommit 172906341b5aa8264e23241b9c12bb4a43a462ff[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Shivam11234567 <shivamtesting7@gmail.com>
+Date:   Sun Apr 6 12:43:37 2025 +0530
+
+    Trigger workflow
+
+[33mcommit b568ffa7e30c19fe42652be4ed41e7f139005473[m
+Author: Shivam11234567 <shivamtesting7@gmail.com>
+Date:   Sun Apr 6 12:27:58 2025 +0530
+
+    Set up CI/CD for login tests
+
+[33mcommit 6ab78f2cf6303ea75e5ae9768557d97614b0a6b5[m
+Author: Shivam11234567 <shivamtesting7@gmail.com>
+Date:   Fri Apr 4 17:41:17 2025 +0530
+
+    Set up Selenium login test with CI/CD
+
+[33mcommit 6936e1f11810f5237b2ae4f5a18c1dec56f95bd0[m
+Author: Shivam11234567 <shivamtesting7@gmail.com>
+Date:   Mon Mar 24 19:24:56 2025 +0530
+
+    Your commit message
+
+[33mcommit 231e0c4ff48698e067d53344722e4431bdfc1e31[m
+Author: Shivam11234567 <shivamtesting7@gmail.com>
+Date:   Mon Mar 24 11:23:36 2025 +0530
+
+    Your commit message
+
+[33mcommit d8af3928adb472fd4531f0e90f8edf2e133153d7[m
+Author: Shivam11234567 <shivamtesting7@gmail.com>
+Date:   Tue Mar 18 12:58:18 2025 +0530
+
+    Your commit message
+
+[33mcommit 8a67a31d09c863570c929c7c0781d94692f10b86[m
+Author: Shivam11234567 <shivamtesting7@gmail.com>
+Date:   Wed Mar 12 11:25:42 2025 +0530
+
+    Your commit message here
+
+[33mcommit d629c1f36a720a40b86c2ad423aac6b704ef644e[m
+Author: Shivam11234567 <shivamtesting7@gmail.com>
+Date:   Mon Mar 3 19:42:29 2025 +0530
+
+    first commit
+
+[33mcommit ed66c31f4c42a91f5fa1428120bc4e9cd3c75e12[m
+Author: Shivam11234567 <shivamtesting7@gmail.com>
+Date:   Mon Mar 3 12:43:14 2025 +0530
+
+    Your commit message
+
+[33mcommit c573b6c0b45dec4776d9fcaacc9f8916971f0dfe[m
+Author: shivam srivastava <shivam.srivastava@novotstack.com>
+Date:   Thu Feb 27 18:51:07 2025 +0530
+
+    Initial commit
+
+[33mcommit 36439bf0231696506b087e8105cc61f47379bb5e[m
+Author: shivam srivastava <shivam.srivastava@novotstack.com>
+Date:   Mon Feb 24 14:05:33 2025 +0530
+
+    test
+
+[33mcommit 69fda6fe58b57baf4772c2f5367f39958041f603[m
+Author: shivam srivastava <shivam.srivastava@novotstack.com>
+Date:   Mon Feb 24 11:01:41 2025 +0530
+
+    Upadate test file
