@@ -4,3 +4,4 @@ python-dotenv
 bs4
 pytest-html
 webdriver-manager
+
