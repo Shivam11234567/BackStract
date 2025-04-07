@@ -18,12 +18,12 @@ jobs:
     - name: Install system dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y wget unzip libxss1 libappindicator1 libindicator7
+        sudo apt-get install -y wget unzip libxss1
 
     - name: Install Chrome
       run: |
         wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-        sudo apt install ./google-chrome-stable_current_amd64.deb -y
+        sudo apt install ./google-chrome-stable_current_amd64.deb -y --allow-downgrades --fix-missing
         sudo rm google-chrome-stable_current_amd64.deb
         echo "Chrome version: $(google-chrome --version)"
 
@@ -48,6 +48,7 @@ jobs:
       run: |
         python -c "import pytest; print(f'Pytest version: {pytest.__version__}')"
         python -c "from selenium import webdriver; print('Selenium imports successfully')"
+        python -c "import conftest; print('Conftest imports successfully')"
 
     - name: Run tests
       run: |
