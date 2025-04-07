@@ -10,16 +10,17 @@ def pytest_addoption(parser):
 @pytest.fixture
 def driver(request):
     use_remote = request.config.getoption("--driver") == "Remote"
+    remote_url = request.config.getoption("--remote-url")
+
+    options = Options()
+    options.add_argument("--headless")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+
     if use_remote:
-        options = Options()
-        options.add_argument("--headless")
-        options.add_argument("--no-sandbox")
-        options.add_argument("--disable-dev-shm-usage")
-        driver = webdriver.Remote(
-            command_executor=request.config.getoption("--remote-url"),
-            options=options
-        )
+        driver = webdriver.Remote(command_executor=remote_url, options=options)
     else:
-        driver = webdriver.Chrome()
+        driver = webdriver.Chrome(options=options)
+
     yield driver
     driver.quit()
