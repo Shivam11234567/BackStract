@@ -1,4 +1,5 @@
-name: Selenium Tests
+# .github/workflows/selenium-tests.yml
+name: Run Selenium Tests
 
 on:
   push:
@@ -19,21 +20,19 @@ jobs:
           --shm-size=2g
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-    - name: Run tests
-      env:
-        DISPLAY: :99
-      run: |
-        pytest tests/ --driver Remote --capability browserName chrome --remote-url http://localhost:4444/wd/hub
+      - name: Run Selenium Tests with Pytest
+        run: |
+          pytest tests/ --driver Remote --capability browserName chrome --remote-url http://localhost:4444/wd/hub
