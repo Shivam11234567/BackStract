@@ -1073,16 +1073,3 @@ class WorkspacePage:
             EC.element_to_be_clickable((By.XPATH, "//li[text()='Element in List(Bool)']"))
         )
         selected_option.click()
-
-
-
-
-
-
-
-
-
-
-
-
-

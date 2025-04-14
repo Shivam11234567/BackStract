@@ -1668,5 +1668,3 @@ class TestDashboard:
         dashboard.code_block_list_value()
         print("Pass")
         time.sleep(5)
-
-

@@ -1,0 +1,43 @@
+from selenium.webdriver.common.by import By
+
+class LoginLocators:
+    """Locators for login page elements."""
+    EMAIL_INPUT = (By.ID, "email_input")
+    PASSWORD_INPUT = (By.ID, "password_input")
+    LOGIN_BUTTON = (By.ID, "login_submit_btn")
+    FORGOT_PASSWORD = (By.ID, "forget__password")
+    SIGNUP_LINK = (By.XPATH, "//a[contains(@href, '/auth/signup')]")
+    GOOGLE_LOGIN = (By.ID, "github_google")
+    GITHUB_LOGIN = (By.ID, "github_signup")
+    ERROR_MESSAGE = (By.CLASS_NAME, "go3958317564")
+
+class WorkspaceLocators:
+    """Locators for workspace page elements."""
+    WORKSPACE_INPUT = (By.ID, "workspace_enter_input")
+    CREATE_WORKSPACE_BTN = (By.ID, "create_workspace_btn")
+    WORKSPACE_CARD = (By.ID, "workspace_card_0")
+    ADD_WORKSPACE_CARD = (By.ID, "add_workspace_card")
+    WORKSPACE_SETTING = (By.ID, "workspace_card_setting_0")
+    UPGRADE_PLAN_CLOSE = (By.ID, "close_alert_updrage_plan")
+    ADD_COLLECTION_BTN = (By.ID, "add_collecction-btn")
+    COLLECTION_CARD = (By.ID, "collection__card--0")
+    COLLECTION_NAME_INPUT = (By.ID, "create_col-name-input")
+    COLLECTION_DESC_INPUT = (By.ID, "create_col-desc-input")
+    ENVIRONMENT_DROPDOWN = (By.XPATH, "//input[@placeholder='Select environment']")
+    PYTHON_OPTION = (By.XPATH, "//button[@id='collection_lan_type-python']")
+    CREATE_COLLECTION_NEXT = (By.ID, "create_col-next-btn")
+    DATABASE_URL = (By.ID, "import_db_url-input")
+    DATABASE_USERNAME = (By.ID, "import_db_username-input")
+    DATABASE_PORT = (By.ID, "import_db_port-input")
+    DATABASE_PASSWORD = (By.ID, "import_db_passowrd-input")
+    SSL_DROPDOWN = (By.CLASS_NAME, "css-1xc3v61-indicatorContainer")
+    SSL_TRUE_OPTION = (By.XPATH, "//div[contains(text(),'True')]")
+    TEST_DB_CONNECTION = (By.ID, "test_db_connection-btn")
+    DATABASE_DROPDOWN = (By.ID, "import_db-list")
+    POSTGRES_OPTION = (By.XPATH, "//div[text()='postgres']")
+    IMPORT_DB_CONTINUE = (By.ID, "import_db_continue-btn")
+    API_CARD = (By.ID, "api__card-0")
+    RUN_DEBUG_BTN = (By.ID, "header_run_and_debug")
+    RUN_BTN = (By.ID, "builde_sidebar_run_btn")
+    PUBLISH_BTN = (By.ID, "header_publish")
+    GO_TO_DASHBOARD = (By.ID, "col_go_to_dashboard") 
