@@ -85,3 +85,13 @@ class TestLogin:
         time.sleep(3)
 
         driver.quit()
+
+    def test_signup_link1(self, driver):
+        """Verify that clicking Sign Up redirects to the signup page."""
+        login_page = LoginPage(driver)
+        login_page.navigate()
+        login_page.click_signup()
+        assert "signup" in driver.current_url  # Check if redirected
+        time.sleep(3)
+
+        driver.quit()
